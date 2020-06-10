@@ -37,7 +37,7 @@
         "fvi-node-utils": "^0.0.1"
     },
     "devDependencies": {
-        "fvi-koa-server": "^0.0.13",
+        "fvi-koa-server": "^0.0.1",
         "chai": "^4.2.0",
         "grunt": "^1.0.4",
         "grunt-concurrent": "^3.0.0",
@@ -49,7 +49,7 @@
         "grunt-nodemon": "^0.4.2",
         "grunt-notify": "^0.4.5",
         "grunt-shell": "^3.0.1",
-        "fvi-prettier-config": "^1.0.2",
+        "fvi-prettier-config": "^0.0.1",
         "load-grunt-tasks": "^5.0.1",
         "mocha": "^7.1.0"
     }
