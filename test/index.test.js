@@ -53,6 +53,9 @@ describe('Testing Axios Client', () => {
         try {
             const testClient = app({
                 url: 'http://localhost:9990',
+                headers: {
+                    testing: 'test',
+                },
                 timeout: 30000,
             })
             testClient
