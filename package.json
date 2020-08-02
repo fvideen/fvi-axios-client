@@ -34,10 +34,12 @@
         "axios": "^0.19.2",
         "axios-delay": "^1.0.0-rc6",
         "axios-mock-adapter": "^1.18.1",
-        "fvi-node-utils": "^0.0.1"
+        "fvi-debug": "file:../fvi-debug",
+        "@hapi/joi": "^17.1.0"
     },
     "devDependencies": {
         "fvi-koa-server": "^0.0.1",
+        "fvi-node-utils": "^0.0.1",
         "chai": "^4.2.0",
         "grunt": "^1.0.4",
         "grunt-concurrent": "^3.0.0",

@@ -2,56 +2,49 @@
 
 const axios = require('axios')
 const axiosDelay = require('axios-delay')
-
 const MockAdapter = require('axios-mock-adapter')
 
-const utils = require('fvi-node-utils')
+const debug = require('fvi-debug')
 
-const baseClient = require('./base')
-const schema = require('./schema')
+const schema = require('./validation')
+const core = require('./core')
 
-const create = (cfg = null) => {
-    const { error, value } = schema.validate(cfg)
+const create = (opts = {}) => {
+    const { value, error } = schema.validate(opts)
 
     if (error) {
-        throw utils.objects.toErrorStack(
-            new Error(
-                `[fvi-axios-client]: Config is invalid!; validation=${utils.objects.inspect(error)}`
-            )
-        )
+        throw new Error(`${__dirname}: Options are invalid!; error=${JSON.stringify(error)}`)
     }
 
-    const config = value
-    const baseURL = config.url
-    const timeout = config.timeout === 0 ? null : config.timeout
-    const delay = config.delay === 0 ? null : config.delay
+    const options = value
 
     const adapter = axiosDelay.default(axios.defaults.adapter)
-    const myHeaders = config.headers || {}
+    const myHeaders = options.headers || {}
     const headers = {
         ...axios.defaults.headers,
         ...myHeaders,
     }
 
-    utils.debug.here(`[fvi-axios-client]:cfg=${utils.objects.inspect(config)}`)
+    debug.here(
+        `Creating axios with opts=${JSON.stringify(options)}; headers=${JSON.stringify(headers)}`
+    )
 
-    const opts = {
-        baseURL,
-        timeout,
-        delay,
-        adapter,
+    const client = axios.create({
+        baseURL: options.url,
+        timeout: options.timeout,
+        delay: options.delay,
         headers,
+        adapter,
+    })
+
+    const instance = core(client, options)
+
+    if (options.mock) {
+        const mock = new MockAdapter(client)
+        instance.mock = mock
     }
 
-    const instance = axios.create(opts)
-    const client = baseClient(instance, opts)
-
-    if (config.mock) {
-        const mock = new MockAdapter(instance)
-        client.mock = mock
-    }
-
-    return client
+    return instance
 }
 
 module.exports = create
