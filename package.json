@@ -34,7 +34,7 @@
         "axios": "^0.19.2",
         "axios-delay": "^1.0.0-rc6",
         "axios-mock-adapter": "^1.18.1",
-        "fvi-debug": "file:../fvi-debug",
+        "fvi-debug": "^0.0.1",
         "@hapi/joi": "^17.1.0"
     },
     "devDependencies": {
