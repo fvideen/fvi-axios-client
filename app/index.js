@@ -35,6 +35,7 @@ const create = (opts = {}) => {
         delay: options.delay,
         headers,
         adapter,
+        ...options,
     })
 
     const instance = core(client, options)
