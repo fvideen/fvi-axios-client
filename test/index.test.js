@@ -58,6 +58,8 @@ describe('Testing Axios Client', () => {
                 },
                 timeout: 30000,
             })
+            chai.assert.exists(testClient.getUri())
+            chai.assert.equal('http://localhost:9990', testClient.getUri())
             testClient
                 .get('/support/ping')
                 .then(result => {

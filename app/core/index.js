@@ -34,5 +34,6 @@ module.exports = (axios, opts = {}) => {
         delete: toRequest(axios, 'delete', opts.delay),
         put: toRequest(axios, 'put', opts.delay, true),
         post: toRequest(axios, 'post', opts.delay, true),
+        ...axios,
     }
 }
