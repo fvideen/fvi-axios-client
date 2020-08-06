@@ -26,8 +26,8 @@ module.exports = function (grunt) {
     }
 
     var shell = {
-        babel: {
-            command: 'babel src --out-dir dist',
+        webpack: {
+            command: 'npx webpack',
         },
         exec: {
             command: 'node app',
@@ -57,6 +57,7 @@ module.exports = function (grunt) {
 
     var clean = {
         src: [
+            path.resolve() + '/dist',
             path.resolve() + '/*.log',
             path.resolve() + '/*.txt',
             path.resolve() + '/*.zip',
@@ -139,7 +140,7 @@ module.exports = function (grunt) {
 
     require('load-grunt-tasks')(grunt)
 
-    grunt.registerTask('compile', ['clean', 'shell:babel'])
+    grunt.registerTask('compile', ['clean', 'shell:webpack'])
 
     grunt.registerTask('test', ['env:test', 'compile', 'mochaTest', 'notify:test'])
     grunt.registerTask('debug-test', ['env:debugtest', 'compile', 'mochaTest', 'notify:test'])

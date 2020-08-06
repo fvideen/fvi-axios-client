@@ -1,14 +1,12 @@
 'use strict'
 
-const debug = require('fvi-debug')
-
 const setDelay = (opts, delay) => {
     const optsWithDelay = { ...opts, delay }
     return optsWithDelay
 }
 
 const throwsError = (e, method, endpoint, body) => {
-    debug.here(
+    console.error(
         `[${method}][${endpoint}]: ${body ? 'body=' + body : ''}; error=${JSON.stringify(e)}`
     )
     throw e
