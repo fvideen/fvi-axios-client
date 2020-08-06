@@ -9,7 +9,7 @@ const {
     isObject,
     isBoolean,
     isNotEmpty,
-} = require('fvi-validator-js')
+} = require('fvi-js-validator')
 
 const url = [isString(), isNotEmpty()]
 const timeout = [isInteger(), isMin(1)]

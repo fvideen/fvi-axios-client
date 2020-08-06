@@ -39,8 +39,7 @@
         "axios": "^0.19.2",
         "axios-delay": "^1.0.0-rc6",
         "axios-mock-adapter": "^1.18.2",
-        "fvi-validator-js": "0.0.1",
-        "fvi-validator.js": "^0.0.1"
+        "fvi-js-validator": "0.0.3"
     },
     "devDependencies": {
         "chai": "^4.2.0",
