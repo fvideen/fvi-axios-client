@@ -1,15 +1,20 @@
 'use strict'
 
-const joi = require('@hapi/joi')
+const {
+    Validator,
+    Required,
+    isString,
+    isInteger,
+    isMin,
+    isObject,
+    isBoolean,
+    isNotEmpty,
+} = require('fvi-validator-js')
 
-const schema = joi
-    .object({
-        url: joi.string().required(),
-        timeout: joi.number().integer().positive().optional().default(null),
-        delay: joi.number().integer().positive().optional().default(null),
-        headers: joi.object().optional().options({ stripUnknown: true }),
-        mock: joi.boolean().optional().default(false),
-    })
-    .options({ stripUnknown: true })
+const url = [isString(), isNotEmpty()]
+const timeout = [isInteger(), isMin(1)]
+const delay = [isInteger(), isMin(1)]
+const headers = [isObject()]
+const mock = [isBoolean()]
 
-module.exports = schema
+module.exports = Validator({ url: Required(url), timeout, delay, headers, mock })

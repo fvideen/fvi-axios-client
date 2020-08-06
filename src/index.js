@@ -4,19 +4,12 @@ const axios = require('axios')
 const axiosDelay = require('axios-delay')
 const MockAdapter = require('axios-mock-adapter')
 
-const debug = require('fvi-debug')
-
-const schema = require('./validation')
 const core = require('./core')
+const validation = require('./validation')
 
 const create = (opts = {}) => {
-    const { value, error } = schema.validate(opts)
-
-    if (error) {
-        throw new Error(`${__dirname}: Options are invalid!; error=${JSON.stringify(error)}`)
-    }
-
-    const options = value
+    validation(opts)
+    const options = opts
 
     const adapter = axiosDelay.default(axios.defaults.adapter)
     const myHeaders = options.headers || {}
@@ -24,10 +17,6 @@ const create = (opts = {}) => {
         ...axios.defaults.headers,
         ...myHeaders,
     }
-
-    debug.here(
-        `Creating axios with opts=${JSON.stringify(options)}; headers=${JSON.stringify(headers)}`
-    )
 
     const client = axios.create({
         baseURL: options.url,

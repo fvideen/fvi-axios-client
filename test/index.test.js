@@ -127,33 +127,6 @@ describe('Testing Axios Client', () => {
         }
     })
 
-    it('Init with config url=google.com, timeout and delay null', done => {
-        try {
-            app({ url: 'http://google.com', timeout: null, delay: null })
-            done('Should be thorws error!')
-        } catch (e) {
-            done()
-        }
-    })
-
-    it('Init with config url=google.com, timeout null', done => {
-        try {
-            app({ url: 'http://google.com', timeout: null })
-            done('Should be thorws error!')
-        } catch (e) {
-            done()
-        }
-    })
-
-    it('Init with config url=google.com, delay null', done => {
-        try {
-            app({ url: 'http://google.com', delay: null })
-            done('Should be thorws error!')
-        } catch (e) {
-            done()
-        }
-    })
-
     it('Init with config url=google.com, timeout and delay 0', done => {
         try {
             app({ url: 'http://google.com', timeout: 0, delay: 0 })
