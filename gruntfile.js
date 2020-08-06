@@ -57,7 +57,6 @@ module.exports = function (grunt) {
 
     var clean = {
         src: [
-            path.resolve() + '/dist',
             path.resolve() + '/*.log',
             path.resolve() + '/*.txt',
             path.resolve() + '/*.zip',
