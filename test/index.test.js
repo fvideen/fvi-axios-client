@@ -4,7 +4,7 @@ const server = require('fvi-koa-server')
 const chai = require('chai')
 const { toConfig } = require('fvi-node-utils/app/objects')
 
-const app = require('../app/index')
+const app = require('../src/index')
 
 const baseCheck = result => {
     chai.assert(!!result, 'request is null!')
