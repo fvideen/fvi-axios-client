@@ -1,8 +1,13 @@
 {
     "name": "fvi-axios-client",
-    "version": "0.0.6",
+    "version": "0.0.7",
     "description": "FVI - Axios Client",
-    "main": "app/index.js",
+    "main": "dist/index.js",
+    "module": "src/index.js",
+    "files": [
+        "dist/*",
+        "src/*"
+    ],
     "prettier": "fvi-prettier-config",
     "scripts": {
         "compile": "grunt compile",
@@ -34,13 +39,16 @@
         "axios": "^0.19.2",
         "axios-delay": "^1.0.0-rc6",
         "axios-mock-adapter": "^1.18.1",
-        "fvi-debug": "^0.0.1",
+        "fvi-debug": "^0.0.2",
         "@hapi/joi": "^17.1.0"
     },
     "devDependencies": {
         "fvi-koa-server": "^0.0.1",
         "fvi-node-utils": "^0.0.1",
         "chai": "^4.2.0",
+        "@babel/cli": "^7.10.1",
+        "@babel/core": "^7.9.0",
+        "@babel/preset-env": "^7.9.0",
         "grunt": "^1.0.4",
         "grunt-concurrent": "^3.0.0",
         "grunt-contrib-clean": "^2.0.0",
