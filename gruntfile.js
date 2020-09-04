@@ -10,21 +10,6 @@ module.exports = function (grunt) {
         test: path.join(path.resolve(), '/test/**/*.js'),
     }
 
-    var notify = {
-        test: {
-            options: {
-                title: pkg.name + ': Test',
-                message: 'Finished!',
-            },
-        },
-        success: {
-            options: {
-                title: pkg.name + ': Success',
-                message: '## Already! ##',
-            },
-        },
-    }
-
     var shell = {
         babel: {
             command: 'babel src --out-dir dist',
@@ -90,29 +75,6 @@ module.exports = function (grunt) {
         },
     }
 
-    var nodemon = {
-        default: {
-            script: '<%= paths.app %>/index.js',
-            options: {
-                cwd: path.resolve(),
-                watch: ['<%= paths.app %>'],
-                ignore: ['node_modules'],
-            },
-        },
-    }
-
-    var concurrent = {
-        debug: {
-            tasks: ['nodemon', 'watch:debug'],
-        },
-        default: {
-            tasks: ['nodemon', 'watch:js'],
-        },
-        options: {
-            logConcurrentOutput: true,
-        },
-    }
-
     grunt.initConfig({
         pkg: pkg,
         env: {
@@ -132,39 +94,31 @@ module.exports = function (grunt) {
             },
         },
         mochaTest: mochaTest,
-        notify: notify,
         shell: shell,
         paths: paths,
         clean: clean,
         watch: watch,
-        nodemon: nodemon,
-        concurrent: concurrent,
     })
 
     require('load-grunt-tasks')(grunt)
 
     grunt.registerTask('compile', ['clean'])
 
-    grunt.registerTask('test', ['env:test', 'compile', 'mochaTest', 'notify:test'])
-    grunt.registerTask('debug-test', ['env:debugtest', 'compile', 'mochaTest', 'notify:test'])
+    grunt.registerTask('test', ['env:test', 'compile', 'mochaTest'])
+    grunt.registerTask('debug-test', ['env:debugtest', 'compile', 'mochaTest'])
 
-    grunt.registerTask('dev', ['compile', 'env:dev', 'notify:success', 'watch:js'])
-    grunt.registerTask('debug-dev', ['compile', 'env:debugdev', 'notify:success', 'watch:debug'])
+    grunt.registerTask('dev', ['compile', 'env:dev', 'watch:js'])
+    grunt.registerTask('debug-dev', ['compile', 'env:debugdev', 'watch:debug'])
 
-    grunt.registerTask('default', ['test', 'env:dev', 'notify:success', 'nodemon'])
+    grunt.registerTask('default', ['test', 'env:dev'])
 
     grunt.registerTask('version', ['shell:verpatch'])
     grunt.registerTask('version:minor', ['shell:verminor'])
     grunt.registerTask('version:major', ['shell:vermajor'])
 
-    grunt.registerTask('deploy', ['test', 'shell:babel', 'shell:webpack', 'shell:deploy'])
+    grunt.registerTask('build', ['shell:babel', 'shell:webpack'])
+    grunt.registerTask('deploy', ['test', 'build', 'shell:deploy'])
 
-    grunt.registerTask('release', [
-        'test',
-        'shell:babel',
-        'shell:webpack',
-        'shell:gitflowrelease',
-        'notify:success',
-    ])
-    grunt.registerTask('release:finish', ['shell:gitflowreleasefinish', 'deploy', 'notify:success'])
+    grunt.registerTask('release', ['test', 'build', 'shell:gitflowrelease'])
+    grunt.registerTask('release:finish', ['shell:gitflowreleasefinish', 'deploy'])
 }
