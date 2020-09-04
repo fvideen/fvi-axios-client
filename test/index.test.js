@@ -2,7 +2,7 @@
 
 const server = require('fvi-koa-server')
 const chai = require('chai')
-const { toConfig } = require('fvi-node-utils/app/objects')
+const { objects } = require('fvi-node-utils')
 
 const app = require('../src/index')
 
@@ -41,7 +41,7 @@ describe('Testing Axios Client', () => {
     let instanceServer = null
 
     before(() =>
-        server(toConfig(serverProps))
+        server(objects.toConfig(serverProps))
             .then(s => (instanceServer = s.instance))
             .catch(e => {
                 throw e
