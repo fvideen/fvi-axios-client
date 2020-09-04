@@ -1,6 +1,6 @@
 {
     "name": "fvi-axios-client",
-    "version": "0.0.10",
+    "version": "0.0.11",
     "description": "FVI - Axios Client",
     "main": "dist/index.js",
     "module": "src/index.js",
