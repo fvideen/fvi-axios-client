@@ -1,64 +1,67 @@
 {
-    "name": "fvi-axios-client",
-    "version": "0.0.12",
-    "description": "FVI - Axios Client",
-    "main": "src/index.js",
-    "browserslist": "> 0.25%, not dead",
-    "files": [
-        "dist/*",
-        "src/*"
-    ],
-    "prettier": "fvi-prettier-config",
-    "scripts": {
-        "compile": "grunt compile",
-        "build": "grunt compile build",
-        "test": "grunt test",
-        "debug-test": "grunt debug-test",
-        "dev": "grunt dev",
-        "debug-dev": "grunt debug-dev",
-        "prod": "grunt prod",
-        "release": "grunt version && grunt release",
-        "release:minor": "grunt version:minor && grunt release:minor",
-        "release:major": "grunt version:major && grunt release:major",
-        "release:finish": "grunt release:finish",
-        "coverage": "npx nyc@latest npm run test"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/salespaulo/fvi-axios-client.git"
-    },
-    "keywords": [
-        "node",
-        "nodejs",
-        "utils",
-        "utilities"
-    ],
-    "author": "FVI",
-    "license": "UNLICENSED",
-    "homepage": "https://github.com/salespaulo/fvi-axios-client.git",
-    "dependencies": {
-        "axios": "^0.19.2",
-        "axios-delay": "^1.0.0-rc6",
-        "axios-mock-adapter": "^1.18.2",
-        "fvi-js-validator": "^0.0.5"
-    },
-    "devDependencies": {
-        "chai": "^4.2.0",
-        "fvi-koa-server": "^0.0.2",
-        "fvi-node-utils": "^0.0.7",
-        "fvi-prettier-config": "^0.0.1",
-        "@babel/cli": "^7.10.1",
-        "@babel/core": "^7.9.0",
-        "@babel/preset-env": "^7.9.0",
-        "grunt": "^1.0.4",
-        "grunt-contrib-clean": "^2.0.0",
-        "grunt-contrib-watch": "^1.1.0",
-        "grunt-env": "^1.0.1",
-        "grunt-mocha-test": "^0.13.3",
-        "grunt-shell": "^3.0.1",
-        "load-grunt-tasks": "^5.0.1",
-        "mocha": "^7.1.0",
-        "webpack": "^4.44.1",
-        "webpack-cli": "^3.3.12"
-    }
+  "name": "fvi-axios-client",
+  "version": "0.0.12",
+  "description": "FVI - Axios Client",
+  "main": "src/index.js",
+  "prettier": "fvi-prettier-config",
+  "browserslist": "> 0.25%, not dead",
+  "files": [
+    "dist/*",
+    "src/*"
+  ],
+  "author": {
+    "name": "Freunde Von Ideen",
+    "email": "paulosalesfvi@gmail.com"
+  },
+  "license": "UNLICENSED",
+  "scripts": {
+    "compile": "grunt compile",
+    "build": "grunt compile build",
+    "test": "grunt test",
+    "debug-test": "grunt debug-test",
+    "dev": "grunt dev",
+    "debug-dev": "grunt debug-dev",
+    "prod": "grunt prod",
+    "release": "grunt version && grunt release",
+    "release:minor": "grunt version:minor && grunt release:minor",
+    "release:major": "grunt version:major && grunt release:major",
+    "release:finish": "grunt release:finish",
+    "coverage": "npx nyc@latest npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/salespaulo/fvi-axios-client.git"
+  },
+  "keywords": [
+    "node",
+    "nodejs",
+    "utils",
+    "utilities"
+  ],
+  "homepage": "https://github.com/salespaulo/fvi-axios-client.git",
+  "dependencies": {
+    "axios": "^0.21.4",
+    "axios-mock-adapter": "^1.20.0",
+    "fvi-js-validator": "^0.0.6"
+  },
+  "devDependencies": {
+    "fvi-koa-server": "^0.0.7",
+    "fvi-node-utils": "^0.1.1",
+    "fvi-prettier-config": "^0.0.2",
+    "chai": "^4.3.4",
+    "grunt": "^1.4.1",
+    "grunt-apidoc": "^0.11.0",
+    "grunt-contrib-clean": "^2.0.0",
+    "grunt-contrib-watch": "^1.1.0",
+    "grunt-env": "^1.0.1",
+    "grunt-shell": "^3.0.1",
+    "grunt-mocha-test": "^0.13.3",
+    "load-grunt-tasks": "^5.1.0",
+    "mocha": "^9.1.1",
+    "@babel/cli": "^7.10.1",
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.0",
+    "webpack": "^5.53.0",
+    "webpack-cli": "^4.8.0"
+  }
 }
