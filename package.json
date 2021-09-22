@@ -13,7 +13,7 @@
     "name": "Freunde Von Ideen",
     "email": "paulosalesfvi@gmail.com"
   },
-  "license": "UNLICENSED",
+  "license": "MIT",
   "scripts": {
     "compile": "grunt compile",
     "build": "grunt compile build",
