@@ -1,6 +1,6 @@
 {
   "name": "fvi-axios-client",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "FVI - Axios Client",
   "main": "src/index.js",
   "prettier": "fvi-prettier-config",
